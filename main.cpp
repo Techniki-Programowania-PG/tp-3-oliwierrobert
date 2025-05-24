@@ -118,11 +118,37 @@ vector<double> cosssss(double amplituda, double okres, double czestotliwosc, dou
     mp::show();
     return wynik;
 }
+vector<double> czestotliwoscUsun(vector<double> sygnal, double sample, double cutoff){
+vector<complex<double>> wynik=    dft(sygnal, sample);
+vector<double> mag;
+for( int i =0; i <wynik.size(); i++){
+mag.push_back(sqrt(wynik[i].real()*wynik[i].real() + wynik[i].imag()*wynik[i].imag()));
+
+}
+for(int j= 0 ; j<mag.size(); j++){
+    if(mag[j]>cutoff){
+        wynik[j] = (0.0, 0.0);
+    }
+}
+vector<double> doWykresu = idft(wynik,sample);
+//vector<double> os_x = mp::linspace(0,doWykresu.size(), 1000);
+//mp::plot(os_x, doWykresu);
+//mp::show();
+return doWykresu;
+
+}
 int main() {
 //    idft(dft(sinus(1,20,0,500,256),256),256);
 //  prostokatny(5,20,0,100,250);
     vector<double> sygnal = cosssss(1, 1, 5, 1000);
-    idft(dft(sygnal, 256), 256);
+    vector<double>sygnal2 = sinnnnnnn(2,1,200,1000);
+    vector<double> outSygnal;
+    for(int i = 0; i<sygnal2.size();i++){
+
+        outSygnal.push_back(sygnal[i] + sygnal2[i]);
+    }
+ //   idft(dft(outSygnal, 256), 256);
+ czestotliwoscUsun(sygnal, 256, 200);
     return 0;
 
 
