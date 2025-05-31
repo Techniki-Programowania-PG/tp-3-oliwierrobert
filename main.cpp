@@ -183,3 +183,32 @@ PYBIND11_MODULE(sygnaly, m) {
 }
 
 
+
+int main(){
+return 0;
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
