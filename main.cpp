@@ -91,13 +91,7 @@ vector <double> prostokatny(double amplitude, double czestotliwosc, double t_min
 		if (sin(2 * M_PI * czestotliwosc * os_x[i]) >= 0) wynik.push_back(amplitude);
 		else wynik.push_back(0);
 	}
-	//   double okres = 1/czestotliwosc;
-	//   double polowa_okresu = okres/2;
-	//   for (int i = 0; i<samples; i++){
-	//   double obecnyCzas = fmod(os_x[i] ,okres);
-	//   if(obecnyCzas<polowa_okresu) wynik.push_back(amplitude);
-	//   else wynik.push_back(0);
-	//  }
+
 	mp::xlabel("Czas [s]");
 	mp::ylabel("y(t)");
 	mp::plot(os_x, wynik);
@@ -126,7 +120,7 @@ vector<double> cosssss(double amplituda, double okres, double czestotliwosc, dou
 	mp::xlabel("Czas [s]");
 	mp::ylabel("y(t)");
 	mp::plot(os_x, wynik);
-	//mp::show();
+
 	return wynik;
 }
 vector<double> czestotliwoscUsun(vector<double> sygnal, double sample, double cutoff, double okres) {
