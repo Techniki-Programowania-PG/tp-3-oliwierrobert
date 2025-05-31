@@ -1,13 +1,12 @@
 // Projekt.cpp: definiuje punkt wejścia dla aplikacji.
 //
 #define _USE_MATH_DEFINES
-#include "Projekt.h"
 #include <matplot/matplot.h>
 #include <vector>
 #include <complex>
 #include <cmath>
 #include <iomanip>
-
+#include <pybind11/pybind11.h>
 using namespace std;
 namespace mp = matplot;
 vector<complex<double>> dft(vector<double> sygnal, int samples) {
@@ -176,9 +175,9 @@ PYBIND11_MODULE(sygnaly, m) {
 	m.def("plotCos", &cosssss, "cosinus",
 		pybind11::arg("amplituda"), pybind11::arg("okres"), pybind11::arg("czestotliwosc"), pybind11::arg("sampleCzestotliwosc"));
 	m.def("plotSquare", &prostokatny, "prostokatny",
-		pybind11::arg("amplitude"), pybind11::arg("czestotliwosc"), pybind11::arg("t_min"), pybind11::arg("t_max"), pybind11::arg("samples"), pybind11::arg("faza"));
+		pybind11::arg("amplitude"), pybind11::arg("czestotliwosc"), pybind11::arg("t_min"), pybind11::arg("t_max"), pybind11::arg("samples"));
 	m.def("plotSaw", &pila, "pila",
-		pybind11::arg("amplitude"), pybind11::arg("frequency"), pybind11::arg("begin"), pybind11::arg("end"));
+		pybind11::arg("amplitude"), pybind11::arg("czestotliwosc"), pybind11::arg("t_min"), pybind11::arg("t_max"), pybind11::arg("samples"), pybind11::arg("faza"));
 	m.def("DFT", &dft, "dyskretna transformata fouriera",
 		pybind11::arg("sygnal"), pybind11::arg("samples"));
 	m.def("IDFT", &idft, "odwrotna dyskretna transformata fouriera",
@@ -190,9 +189,6 @@ PYBIND11_MODULE(sygnaly, m) {
 }
 
 
-#include <iostream>
-#include <vector>
-#include <iomanip>
 
 int main() {
 	//cosssss	(5, 3, 2, 1000);
